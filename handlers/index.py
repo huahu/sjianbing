@@ -2,10 +2,17 @@
 import tornado
 import tornado.web
 import os.path
+from model.entity import MysqlHander
 
 class MainHandler(tornado.web.RequestHandler):
     def get(self):
-        self.render("index.html")
+        items = MysqlHander().show()
+        self.render("index.html",items=items)
+
+class ShowData(tornado.web.RequestHandler):
+    def get(self):
+        db = MysqlHander().show()
+        self.write(str(db))
 
 # 找不到页面的处理
 class NotFoundHandler(tornado.web.RequestHandler):
