@@ -1,7 +1,9 @@
 from handlers.index import MainHandler
+from handlers.index import ShowData
 
 urls = [
-    (r'/', MainHandler),
+    (r'/index', MainHandler),
+    (r'/data',ShowData),
 ]
 
 
