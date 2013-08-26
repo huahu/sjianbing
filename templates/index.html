@@ -1,41 +1,74 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Huahu</title>
-    <link href="/static/css/index.css" rel="stylesheet" />
-    <script src="/static/js/sjianbing.js" type="text/javascript"></script>
-  </head>
+<link rel="stylesheet" href="/static/css/index.css" />
+<script type="text/javascript" src="/static/js/huah.js"></script>
+</head>
 <body>
+
 <div id="huahu">
     <div id="nav">
-    <ul>
-    <li><a href="">首页</a></li>
-    <li><a href="">卧室</a></li>
-    <li><a href="">客厅</a></li>
-    <li><a href="">浴室</a></li>
-    </ul>
+       <ul>
+           <li><a href="">首页</a></li>
+       </ul>
     </div>
     <div id="right">
-        This is the right
+		<input type="text" id="show" />
+            <ul>
+               {% for item in items %}
+                  <li>welcome&nbsp;{{item.name}}</li>
+               {% end %}
+            </ul>
+        <form action="/data" method="post">
+            <p>编号： <input type="text" name="number" /></p>
+            <p>名字： <input type="text" name="name" /></p>
+            <p><input type="submit" value="提交" /></p>
+        </form>
     </div>
     <div id="zj">
-        This is the middle
+        <div id="red">
+           <ul>
+              <li><a><img src="static/image/blue1.jpg" alt="纯棉斜纹素色格子混搭四件套-薰衣草" width="200" height="200"/><br/>就是这个样子</a></li>
+           </ul>
+           <form action="" method="post" name="form001">
+		   	 <select id="select" onchange="getSelectValue()">
+			   <option value="">---------请选择--------</option>
+			   <option value="1">四件套200/套</option>
+			   <option value="2">四件套200/套</option>
+			   <option value="3">3</option>
+			   <option value="4">4</option>
+			   <option value="5">5</option>
+               <option value="6">6</option>
+			   <option value="7">7</option>
+			   <option value="8">8</option>
+			   <option value="9">9</option>
+			   <option value="10">10</option>
+			 </select>
+           </form>
+        </div>
+        <div id="green"><img src="static/image/green1.jpg" width="600" height="430"/></div>
+        <div id="blue"><img src="static/image/red1.jpg" width="600" height="430"/></div>
     </div>
     <div id="left">
-        <ul>
-        <li><a href="">四件套</a></li>
-        <li><a href="">被子被芯</a></li>
-        <li><a href="">浴袍</a></li>
-        <li><a href="">毯子</a></li>
-        </ul>
+        <div class="wwwzzjsnet">
+            <div class="menu_zzjs_1" id="zzjs_0">
+                <div class="tit_zzjs_net"><h3 class="Fst"><a href="javascript:showmenu_zzjs(0);">站长特效一号</a></h3></div>
+                    <div class="txt_zzjs_net">
+                        <ul>
+                            <li><a class="tabs" id="red-tab" href="javascript:switchbox(1);">红色</a></li>
+                            <li><a class="tabs" id="green-tab" href="javascript:switchbox(2);">绿色</a></li>
+                            <li><a class="tabs" id="blue-tab" href="javascript:switchbox(3);">蓝色</a></li>
+                        </ul>
+                    </div>
+            </div>
+        </div>
+    </div>
+
+    <div id=foot>
+        This is foot
     </div>
 </div>
-<div id="foot">
-        This is the foot
-</div>
-
 </body>
-
 </html>
-
