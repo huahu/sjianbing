@@ -15,16 +15,11 @@
        </ul>
     </div>
     <div id="right">
-		<input type="text" id="show" />
-            <ul>
-               {% for item in items %}
-                  <li>welcome&nbsp;{{item.name}}</li>
-               {% end %}
-            </ul>
-        <form action="/data" method="post">
-            <p>编号： <input type="text" name="number" /></p>
-            <p>名字： <input type="text" name="name" /></p>
-            <p><input type="submit" value="提交" /></p>
+		<!--<input type="text" id="show" />-->
+        <form  action="/huahu" method="post" >
+            number: <input type="text" name="number" id="number" />
+            name:<input type="text" name="name" id="namezz" />
+            <input type="submit" value="提交" />
         </form>
     </div>
     <div id="zj">
@@ -65,7 +60,6 @@
             </div>
         </div>
     </div>
-
     <div id=foot>
         This is foot
     </div>
