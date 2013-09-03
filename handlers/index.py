@@ -4,8 +4,12 @@ import os.path
 from wtforms import TextField
 from hform import Form
 from model import *
+
+# import model
+# from model import session
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy import create_engine
+
 
 class HuahuForm(Form):
     name = TextField('name')
@@ -17,15 +21,17 @@ class MainHandler(RequestHandler):
 
 class ReciveData(RequestHandler):
     def post(self):
-        self.db=create_engine('mysql+mysqldb://root:@localhost/huahu',echo=True)
-        self.Session = sessionmaker(bind=self.db)
-        self.session = self.Session()
+        # self.db=create_engine('mysql+mysqldb://root:@localhost/huahu',echo=True)
+        # self.Session = sessionmaker(bind=self.db)
+        # self.session = self.Session()
+        # db = session
+        session =  DefConn().GetConn()
         form = HuahuForm(self.request.arguments, locale_code=self.locale.code)
         number = form.number.data
         name = form.name.data
         ed_user = User(number, name)
-        self.session.add(ed_user)
-        self.session.commit()
+        session.add(ed_user)
+        session.commit()
 
 class NotFoundHandler(RequestHandler):
     def prepare(self):

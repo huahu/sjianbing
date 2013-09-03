@@ -1,5 +1,5 @@
-import torndb
 from sqlalchemy.orm import sessionmaker
+from sqlalchemy.orm import scoped_session
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import Column, Integer, String
@@ -15,6 +15,27 @@ class User(Base):
     def __repr__(self):
         return "<User('%s')>"%self.name
 
-db=create_engine('mysql+mysqldb://root:@localhost/huahu',echo=True)
-Session = sessionmaker(bind=db)
-session = Session()
+
+# from contextlib import contextmanager
+# @contextmanager
+# def session_scope():
+#     db=create_engine('mysql+mysqldb://root:@localhost/huahu',echo=True)
+    # session = Session()
+    # try:
+    #     yield session
+    #     session.commit()
+    # except:
+    #     session.rollback()
+    #     raise
+    # finally:
+    #     session.close()
+class DefConn(object):
+    def __init__(self):
+        self.engine = create_engine('mysql+mysqldb://root:@localhost/huahu',echo=True)
+
+    def GetConn(self):
+        self.db=scoped_session(sessionmaker(bind=self.engine))
+        return self.db
+
+
+
