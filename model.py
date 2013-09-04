@@ -15,20 +15,6 @@ class User(Base):
     def __repr__(self):
         return "<User('%s')>"%self.name
 
-
-# from contextlib import contextmanager
-# @contextmanager
-# def session_scope():
-#     db=create_engine('mysql+mysqldb://root:@localhost/huahu',echo=True)
-    # session = Session()
-    # try:
-    #     yield session
-    #     session.commit()
-    # except:
-    #     session.rollback()
-    #     raise
-    # finally:
-    #     session.close()
 class DefConn(object):
     def __init__(self):
         self.engine = create_engine('mysql+mysqldb://root:@localhost/huahu',echo=True)
